@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <a href="#home" className="footer-logo" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>
-              <span className="logo-name">A S</span>
+              <span className="logo-name">A S </span>
               <span className="logo-role"> Mayank</span>
             </a>
             <p className="footer-slogan">

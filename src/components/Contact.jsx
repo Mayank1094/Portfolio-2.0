@@ -6,16 +6,36 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
 
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'bde26849-f12f-470b-9ea8-93a5635b9dcf',
+          ...formData,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (error) {
+      setStatus('error');
       setTimeout(() => setStatus('idle'), 3000);
-    }, 1500);
+    }
   };
 
   return (
@@ -55,7 +75,6 @@ export default function Contact() {
                     <span>•</span>
                     <a href="https://www.instagram.com/__mayank._02/?__pwa=1" target="_blank" rel="noreferrer">Instagram</a>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -72,9 +91,10 @@ export default function Contact() {
                   type="text"
                   id="name"
                   required
-                  placeholder="John Doe"
+                  placeholder="Your name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  disabled={status === 'sending'}
                 />
               </div>
 
@@ -84,9 +104,10 @@ export default function Contact() {
                   type="email"
                   id="email"
                   required
-                  placeholder="john@example.com"
+                  placeholder="abc@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  disabled={status === 'sending'}
                 />
               </div>
 
@@ -99,6 +120,7 @@ export default function Contact() {
                   placeholder="How can I help you?"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  disabled={status === 'sending'}
                 />
               </div>
 
@@ -110,6 +132,7 @@ export default function Contact() {
                 {status === 'idle' && <><Send size={18} /> Send Message</>}
                 {status === 'sending' && <span className="loader">Sending...</span>}
                 {status === 'success' && <><CheckCircle2 size={18} /> Message Sent!</>}
+                {status === 'error' && <span>Failed — Try Again</span>}
               </button>
             </form>
           </div>

@@ -149,16 +149,7 @@ export default function Hero() {
       {/* Grid overlay */}
       <div className="hero-grid" />
 
-      {/* Floating code snippets */}
-      <div className="floating-snippet snippet-1">
-        <span className="snip-keyword">const</span> <span className="snip-var">dev</span> = <span className="snip-string">'passionate'</span><span className="snip-punct">;</span>
-      </div>
-      <div className="floating-snippet snippet-2">
-        <span className="snip-func">useState</span><span className="snip-punct">(</span><span className="snip-string">'building'</span><span className="snip-punct">)</span>
-      </div>
-      <div className="floating-snippet snippet-3">
-        <span className="snip-keyword">await</span> <span className="snip-func">ship</span><span className="snip-punct">(</span><span className="snip-var">product</span><span className="snip-punct">)</span>
-      </div>
+
 
       <div className="hero-content container">
         <div className="hero-text">

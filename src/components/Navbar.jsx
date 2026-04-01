@@ -43,8 +43,8 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
       <nav className="navbar-inner container">
         <a href="#home" className="navbar-logo" onClick={e => handleNavClick(e, '#home')}>
-          <span className="logo-name">A S</span>
-          <span className="logo-role"> Mayank</span>
+          <span className="logo-name">A S </span>
+          <span className="logo-role">Mayank</span>
         </a>
 
         <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
