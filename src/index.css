@@ -165,25 +165,6 @@ button { cursor: pointer; border: none; font-family: inherit; }
   overflow: hidden;
 }
 
-.glass-card::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    #7c3aed 25%,
-    #06b6d4 50%,
-    #ec4899 75%,
-    transparent 100%
-  );
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: -2;
-  animation: gradient-spin 3s linear infinite;
-}
-
 .glass-card::after {
   content: '';
   position: absolute;
@@ -194,10 +175,6 @@ button { cursor: pointer; border: none; font-family: inherit; }
   transition: background 0.3s ease;
 }
 
-.glass-card:hover::before {
-  opacity: 1;
-}
-
 .glass-card:hover::after {
   background: var(--bg-card-hover);
 }
@@ -206,11 +183,6 @@ button { cursor: pointer; border: none; font-family: inherit; }
   border-color: transparent;
   box-shadow: var(--shadow-glow), var(--shadow-card);
   transform: translateY(-4px);
-}
-
-@keyframes gradient-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 /* Gradient buttons */

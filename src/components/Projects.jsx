@@ -1,6 +1,9 @@
-import React from 'react';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { ExternalLink, ArrowRight, Award, X } from 'lucide-react';
 import { Github } from './SocialIcons';
+import { db, collection } from '../firebase';
+import { getDocs } from 'firebase/firestore';
 
 import './Projects.css';
 
@@ -10,7 +13,7 @@ const projectData = [
     title: 'Clickzz',
     category: 'Full Stack',
     image: '/projects/clickzz-preview.png',
-    description: 'A modern, cinematic website built with React and Tailwind CSS, featuring a sleek dark-themed UI and immersive user experience.',
+    description: 'A modern, high-performance web application built with React and Tailwind CSS. It features a sleek, cinematic dark-themed UI and an immersive, highly interactive user experience.',
     tech: ['React', 'Tailwind CSS', 'Vite'],
     github: 'https://github.com/Mayank1094/cinematic-clickzz',
     live: 'https://clickzz.in',
@@ -19,16 +22,51 @@ const projectData = [
 ];
 
 export default function Projects() {
+  const [certificates, setCertificates] = useState([]);
+  const [showCertificates, setShowCertificates] = useState(false);
+  const [loadingCerts, setLoadingCerts] = useState(false);
+  const [selectedCert, setSelectedCert] = useState(null);
+
+  const fetchCertificates = async () => {
+    if (certificates.length > 0) {
+      setShowCertificates(true);
+      return;
+    }
+    setLoadingCerts(true);
+    setShowCertificates(true);
+    try {
+      const certCollection = collection(db, "certificates");
+      const snapshot = await getDocs(certCollection);
+      const data = snapshot.docs.map(doc => doc.data());
+      
+      setCertificates(data);
+    } catch (error) {
+      console.error("Error fetching certificates:", error);
+    } finally {
+      setLoadingCerts(false);
+    }
+  };
+
   return (
     <section className="section projects" id="projects">
       <div className="container">
         <div className="section-header reveal">
           <p className="section-label">Selected Work</p>
-          <h2 className="section-title">Featured Projects</h2>
-          <p className="section-description">
-            A selection of my recent work focusing on modern design,
-            smooth animations, and impactful user experiences.
-          </p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <h2 className="section-title">Featured Projects</h2>
+              <p className="section-description">
+                A curated selection of my recent engineering work, demonstrating a focus on modern design, scalable architecture, and impactful user experiences.
+              </p>
+            </div>
+            <button 
+              className="btn-primary" 
+              onClick={fetchCertificates}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+            >
+              <Award size={18} /> View Certifications
+            </button>
+          </div>
         </div>
 
         {/* Projects Grid */}
@@ -72,6 +110,55 @@ export default function Projects() {
             View All on GitHub <ArrowRight size={18} />
           </a>
         </div>
+
+        {/* Certificates Modal */}
+        {showCertificates && createPortal(
+          <div className="certificates-modal-overlay" onClick={() => setShowCertificates(false)}>
+            <div className="certificates-modal glass-card" onClick={e => e.stopPropagation()}>
+              <div className="modal-header">
+                <h3>My Certifications</h3>
+                <button className="close-btn" onClick={() => setShowCertificates(false)}>
+                  <X size={24} />
+                </button>
+              </div>
+              <div className="modal-content">
+                {loadingCerts ? (
+                  <div className="loader">Loading...</div>
+                ) : certificates.length > 0 ? (
+                  <div className="certificates-grid">
+                    {certificates.map((cert, idx) => (
+                      <div 
+                        key={idx} 
+                        className="certificate-card"
+                        onClick={() => setSelectedCert(cert.Img || cert.imgSertif)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <img src={cert.Img || cert.imgSertif} alt={`Certificate ${idx + 1}`} loading="lazy" />
+                        <div className="zoom-hint">Click to enlarge</div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p>No certificates found.</p>
+                )}
+              </div>
+            </div>
+          </div>,
+          document.body
+        )}
+
+        {/* Fullscreen Certificate Viewer */}
+        {selectedCert && createPortal(
+          <div className="cert-viewer-overlay" onClick={() => setSelectedCert(null)}>
+            <button className="close-viewer-btn" onClick={() => setSelectedCert(null)}>
+              <X size={32} />
+            </button>
+            <div className="cert-viewer-content" onClick={e => e.stopPropagation()}>
+              <img src={selectedCert} alt="Enlarged Certificate" className="enlarged-cert-image" />
+            </div>
+          </div>,
+          document.body
+        )}
       </div>
     </section>
   );

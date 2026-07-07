@@ -10,7 +10,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import LiquidEther from './components/LiquidEther';
 import WelcomeScreen from './components/WelcomeScreen';
-import CustomCursor from './components/CustomCursor';
 
 import './App.css';
 
@@ -65,7 +64,6 @@ function App() {
 
   return (
     <>
-      <CustomCursor />
 
       <AnimatePresence mode="wait">
         {showWelcome && (
@@ -80,6 +78,7 @@ function App() {
               colors={['#5227FF', '#FF9FFC', '#B19EEF']}
               autoDemo={true}
               resolution={0.4}
+              mouseForce={12}
             />
           </div>
           <Navbar />

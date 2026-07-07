@@ -47,8 +47,7 @@ export default function Contact() {
             <p className="section-label">Get in Touch</p>
             <h2 className="section-title">Let's Build Something<br />Amazing Together</h2>
             <p className="contact-desc">
-              Whether you have a question, a project idea, or just want to say hi,
-              I'll try my best to get back to you!
+              Whether you are looking to build a new product, scale an existing platform, or just want to connect, I'm always open to discussing new opportunities.
             </p>
 
             <div className="contact-methods">

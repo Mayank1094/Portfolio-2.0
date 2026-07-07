@@ -17,32 +17,28 @@ export default function About() {
           {/* Text Content */}
           <div className="about-content reveal">
             <p className="section-label">About Me</p>
-            <h2 className="section-title">Turning Ideas Into<br />Digital Reality</h2>
+            <h2 className="section-title">Bridging Vision &<br />Technical Excellence</h2>
 
             <div className="about-bio">
               <p>
-                I'm <strong>A S Mayank</strong>, a passionate Full Stack Web Developer
-                focusing on creating attractive and responsive user interfaces. I thrive at the intersection
-                of clean engineering and great design.
+                I'm <strong>A S Mayank</strong>, a dedicated Full Stack Developer specializing in building dynamic, high-performance applications. I thrive at the intersection of elegant design and robust software engineering, transforming complex problems into intuitive digital solutions.
               </p>
               <p>
-                My journey started with a burning curiosity about how websites work, and evolved
-                into a love for crafting end-to-end solutions — from optimized REST APIs to
-                pixel-perfect React interfaces.
+                My technical journey is driven by a deep curiosity for modern web architectures. This passion has evolved into a proven ability to deliver comprehensive, end-to-end platforms—seamlessly integrating scalable backend APIs with engaging, pixel-perfect frontends.
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new tech, contributing to open source.
+                Beyond writing code, I am constantly exploring emerging technologies, refining best practices, and contributing to the developer community.
               </p>
             </div>
 
             <div className="about-quick-facts">
               <div className="quick-fact">
                 <span className="fact-label">📍 Location</span>
-                <span className="fact-value">India</span>
+                <span className="fact-value">Karnataka, India</span>
               </div>
               <div className="quick-fact">
                 <span className="fact-label">🎓 Education</span>
-                <span className="fact-value">Full Stack Web Developer</span>
+                <span className="fact-value">Bachelor of Computer Application</span>
               </div>
               <div className="quick-fact">
                 <span className="fact-label">💼 Status</span>
@@ -72,11 +68,11 @@ export default function About() {
               <div className="journey-timeline">
                 <div className="journey-item">
                   <span className="journey-year">2025</span>
-                  <span className="journey-event">Full Stack Web Developer</span>
+                  <span className="journey-event">Full Stack Web Development</span>
                 </div>
                 <div className="journey-item active">
                   <span className="journey-year">Now</span>
-                  <span className="journey-event">Building exciting products & exploring AI</span>
+                  <span className="journey-event">Generative AI</span>
                 </div>
               </div>
             </div>

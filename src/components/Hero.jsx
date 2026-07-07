@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Download, ArrowDown, Mail, Code2 } from 'lucide-react';
+import { Download, Mail, Code2 } from 'lucide-react';
 import { Github, Linkedin, Instagram, Whatsapp } from './SocialIcons';
 
 import './Hero.css';
@@ -162,15 +162,14 @@ export default function Hero() {
             <span className="hero-greeting">Hi, I'm</span>
             <StaggeredText text="A S Mayank" className="hero-name" />
             <span className="hero-role-line">
-              <span className="hero-role-prefix">I build </span>
+              <span className="hero-role-prefix">I am a </span>
               <span className="hero-role-typed" ref={roleRef}>Web Apps</span>
               <span className="hero-cursor">|</span>
             </span>
           </h1>
 
           <p className="hero-description">
-            Creating Innovative, Functional, and User-Friendly Websites for Digital Solutions.
-            Passionate about clean code, great UX, and scalable architectures.
+            I engineer innovative, high-performance web applications that merge stunning design with robust functionality. Passionate about writing clean code, architecting scalable systems, and delivering exceptional user experiences.
           </p>
 
           <div className="hero-actions">
@@ -249,15 +248,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <button
-        id="hero-scroll-down"
-        className="scroll-indicator"
-        onClick={() => handleScroll('#about')}
-        aria-label="Scroll to about section"
-      >
-        <ArrowDown size={20} />
-      </button>
     </section>
   );
 }

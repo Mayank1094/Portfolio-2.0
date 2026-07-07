@@ -77,8 +77,7 @@ export default function Skills() {
           <p className="section-label">Technical Skills</p>
           <h2 className="section-title">My Tech Arsenal</h2>
           <p className="section-description">
-            A comprehensive toolkit honed through real-world projects
-            across the full stack.
+            A comprehensive toolkit honed through real-world software engineering, tailored for building scalable and maintainable full-stack applications.
           </p>
         </div>
 
