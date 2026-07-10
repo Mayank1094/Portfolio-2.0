@@ -183,7 +183,7 @@ export default function Hero() {
             </button>
             <a
               id="hero-cta-resume"
-              href="/resume.pdf"
+              href="/Resume.pdf"
               className="btn-secondary"
               download
             >
