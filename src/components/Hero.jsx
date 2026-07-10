@@ -4,7 +4,7 @@ import { Github, Linkedin, Instagram, Whatsapp } from './SocialIcons';
 
 import './Hero.css';
 
-const roles = ['Web Developer', 'Tech Enthusiast', 'Full Stack Developer', 'React Specialist'];
+const roles = ['AI Developer', 'AI Full Stack developer'];
 
 // ---- Staggered Text Reveal ----
 function StaggeredText({ text, className }) {
