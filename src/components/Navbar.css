@@ -5,24 +5,54 @@
   right: 0;
   z-index: 1000;
   padding: 1.2rem 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none; /* let clicks pass through when scrolled */
 }
 
-.navbar.scrolled {
-  background: rgba(5, 5, 16, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  padding: 0.9rem 0;
+.navbar * {
+  pointer-events: auto;
 }
 
 .navbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 1.5rem; /* container padding */
 }
 
+@media (min-width: 769px) {
+  .navbar.scrolled {
+    padding: 1.5rem 0;
+  }
+  
+  .navbar-inner {
+    border-radius: 100px;
+    border: 1px solid transparent;
+    background: transparent;
+  }
+  
+  .navbar.scrolled .navbar-inner {
+    background: rgba(15, 15, 40, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 1.5rem;
+    max-width: 850px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar.scrolled {
+    background: rgba(5, 5, 16, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    padding: 0.9rem 0;
+  }
+}
 /* Logo */
 .navbar-logo {
   font-family: var(--font-mono);
@@ -106,8 +136,8 @@
 
 .nav-cta-btn {
   margin-left: 0.75rem;
-  font-size: 0.88rem;
-  padding: 0.6rem 1.4rem;
+  font-size: 0.7rem;
+  padding: 0.18rem 1.0rem;
 }
 
 /* Mobile toggle */

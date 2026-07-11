@@ -78,7 +78,8 @@ function App() {
               colors={['#5227FF', '#FF9FFC', '#B19EEF']}
               autoDemo={true}
               resolution={0.4}
-              mouseForce={12}
+              mouseForce={8}
+              cursorSize={73}
             />
           </div>
           <Navbar />

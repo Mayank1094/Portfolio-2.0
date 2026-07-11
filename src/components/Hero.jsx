@@ -231,8 +231,8 @@ export default function Hero() {
             </div>
             {/* Floating tech badges */}
             <div className="tech-badge tb-react">⚛ React</div>
-            <div className="tech-badge tb-node">⬢ Node.js</div>
-            <div className="tech-badge tb-ts">JS</div>
+            <div className="tech-badge tb-node">🐍 Python</div>
+            <div className="tech-badge tb-ts">🐬MySQL</div>
             <div className="tech-badge tb-db">🎨 Tailwind</div>
           </div>
 
